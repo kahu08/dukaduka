@@ -1,0 +1,19 @@
+<div class="landing">
+	<h1>DukaDuka</h1>
+	<h3>-best shop in town-</h3>
+</div>
+<div class="container homepage-products">
+	<div data-hook="homepage_products">
+	  <% cache(cache_key_for_products) do %>
+	    <%= render partial: 'spree/shared/products', locals: { products: @products } %>
+	  <% end %>
+	</div>
+</div>
+<div class="parallax"></div>
+<div id="contacts">
+	<div class="container">
+		<h2>Contact Us</h2>
+		<p>email: admin@example.com</p>
+		<p>call: +254 phone number</p>
+	</div>
+</div>
