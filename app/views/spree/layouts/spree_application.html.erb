@@ -5,14 +5,14 @@
 <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
 <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
   <head data-hook="inside_head">
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
     <%= render partial: 'spree/shared/head' %>
   </head>
   <body class="<%= body_class %> test" id="<%= @body_id || 'default' %>" data-hook="body">
 
 <!-- check if devise is being rendered from a devise based controller -->
     <%= render partial: 'spree/shared/header' unless devise_controller? %>
-
-      <div class="container">
 
       <div id="wrapper" class="row" data-hook>
 
@@ -26,9 +26,7 @@
 
         <%= yield :templates %>
 
-      </div>
-
-      <!-- <%#= render partial: 'spree/shared/footer' %> -->
+      <%= render partial: 'spree/shared/footer' %>
 
     </div>
 
