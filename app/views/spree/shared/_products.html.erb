@@ -33,7 +33,7 @@
             </div>
             <div class="caption">
                 <!-- display name of product in a h3 fontsize  -->
-                <h3><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></h3>
+                <h4><%= link_to truncate(product.name, length: 50), url, class: 'info', itemprop: "name", title: product.name %></h4>
                 <!-- make the amount a clickable button using link_to method -->
                 <p>
                     <%= link_to url, class: 'btn btn-primary' do%>
