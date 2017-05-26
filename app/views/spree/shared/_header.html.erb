@@ -24,15 +24,15 @@
                     <%= link_to  '#', data: {toggle:"dropdown"}, "aria-haspopup"=>'true' do%>
                     <%= taxonomy.name%>
                     <span class="caret"></span>
-                    <%end%>
+                    <% end %>
                     <%= nav_tree(taxonomy.root, @taxon, 1)%>
                 </li>
-                <%end%>
+                <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="link-to-cart" data-hook>
                     <noscript>
-                        <%= link_to Spree.t(:cart), spree.cart_path %>
+                     <%= link_to Spree.t(:cart), spree.cart_path %>
                     </noscript>
                     &nbsp;
                 </li>
