@@ -1,68 +1,70 @@
 <!-- data-hooks help to deface elements acted upon by spree -->
+<div class="container">
 
-<% cache [I18n.locale, current_pricing_options, @product] do %>
+  <% cache [I18n.locale, current_pricing_options, @product] do %>
   <div data-hook="product_show" itemscope itemtype="http://schema.org/Product">
     <% @body_id = 'product-details' %>
-<div class="row">    <!-- making all content appear in a row -->
-  <div class="row">  <!-- row for the header -->
-    <div class="col-md-12">  <!-- header occupies whole grid -->
-      <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
+    <div class="row">
+      <!-- making all content appear in a row -->
+      <div class="row">
+        <!-- row for the header -->
+        <div class="col-md-12">
+          <!-- header occupies whole grid -->
+          <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
 
-    </div>
-  </div>
-    <div class="col-md-3" data-hook="product_left_part">
-      <div  data-hook="product_left_part_wrap">
-<!-- image content -->
-        <div id="product-images" data-hook="product_images">
-          <div id="main-image" data-hook>
-            <%= render partial: 'image' %>
+        </div>
+      </div>
+      <div class="col-md-3" data-hook="product_left_part">
+        <div data-hook="product_left_part_wrap">
+          <!-- image content -->
+          <div id="product-images" data-hook="product_images">
+            <div id="main-image" data-hook>
+              <%= render partial: 'image' %>
+            </div>
+            <div id="thumbnails" data-hook>
+              <%= render partial: 'thumbnails' %>
+            </div>
           </div>
-          <div id="thumbnails" data-hook>
-            <%= render partial: 'thumbnails' %>
+
+          <div data-hook="promotions">
+            <%= render partial: 'promotions' %>
+          </div>
+
+        </div>
+      </div>
+      <!-- content for product properties -->
+      <div class="col-md-3" data-hook="product_center_part">
+        <div data-hook="product_center_part_wrap">
+          <div data-hook="product_properties">
+            <%= render partial: 'properties' %>
           </div>
         </div>
+      </div>
 
+      <!-- content for product description -->
+      <div class="col-md-6" data-hook="product_right_part">
+        <h6 class="product-section-title"><%= Spree.t('detail')%></h6>
 
+        <div data-hook="product_right_part_wrap" class="panel panel-default">
 
-        <div data-hook="promotions">
-          <%= render partial: 'promotions' %>
+          <div id="product-description" data-hook="product_description" class="panel-body">
+
+            <div itemprop="description" data-hook="description">
+              <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
+              <!-- product will show error message in absence of description -->
+            </div>
+
+            <!-- content for cart -->
+            <div id="cart-form" data-hook="cart_form">
+              <%= render partial: 'cart_form' %>
+            </div>
+
+          </div>
+
         </div>
-
       </div>
     </div>
-    <!-- content for product properties -->
-<div class="col-md-3" data-hook="product_center_part">
-<div data-hook="product_center_part_wrap">
-  <div data-hook="product_properties">
-    <%= render partial: 'properties' %>
-  </div>
-</div>
-</div>
-
-<!-- content for product description -->
-    <div class="col-md-6" data-hook="product_right_part">
-      <h6 class="product-section-title"><%= Spree.t('detail')%></h6>
-
-      <div  data-hook="product_right_part_wrap" class="panel panel-default">
-
-        <div id="product-description" data-hook="product_description" class="panel-body">
-
-
-          <div itemprop="description" data-hook="description">
-            <%= product_description(@product) rescue Spree.t(:product_has_no_description) %><!-- product will show error message in absence of description -->
-          </div>
-
-<!-- content for cart -->
-          <div id="cart-form" data-hook="cart_form">
-            <%= render partial: 'cart_form' %>
-          </div>
-
-        </div>
-
-
-      </div>
-    </div>
-    </div>
 
   </div>
-<% end %>
+  <% end %>
+</div>

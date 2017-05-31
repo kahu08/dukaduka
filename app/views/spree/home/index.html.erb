@@ -13,9 +13,9 @@
 	<h2>FEATURED ITEMS</h2>
 	<hr>
 	<div data-hook="homepage_products">
-	  <% cache(cache_key_for_products) do %>
-	    <%= render partial: 'spree/shared/products', locals: { products: @products } %>
-	  <% end %>
+		<% cache(cache_key_for_products) do %>
+		<%= render partial: 'spree/shared/products', locals: { products: @products } %>
+		<% end %>
 	</div>
 </div>
 <!-- <div>

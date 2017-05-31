@@ -1,9 +1,11 @@
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+<!--[if IE 7 ]> <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="<%= I18n.locale %>">
+  <!--<![endif]-->
   <head data-hook="inside_head">
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://use.fontawesome.com/63aea2fce6.js"></script>
@@ -12,24 +14,22 @@
   </head>
   <body class="<%= body_class %> test" id="<%= @body_id || 'default' %>" data-hook="body">
 
-<!-- check if devise is being rendered from a devise based controller -->
+    <!-- check if devise is being rendered from a devise based controller -->
     <%= render partial: 'spree/shared/header' unless devise_controller? %>
     <div class="page-content">
       <div id="wrapper" class="row" data-hook>
 
         <%= taxon_breadcrumbs(@taxon) %>
 
-
-        <div id="content" class="columns <%= !content_for?(:sidebar) ? "sixteen" : "twelve omega" %>" data-hook>
+        <div id="content" class="columns <%= !content_for?(:sidebar) ? " sixteen" : " twelve omega" %>" data-hook>
           <%= flash_messages %>
           <%= yield %>
         </div>
 
         <%= yield :templates %>
+      </div>
     </div>
-      <%= render partial: 'spree/shared/footer' %>
-
-    </div>
+    <%= render partial: 'spree/shared/footer' %>
 
   </body>
 </html>
