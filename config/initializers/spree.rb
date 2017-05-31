@@ -52,6 +52,9 @@ Spree.config do |config|
   # )
 end
 
+Spree::Order.remove_checkout_step(:address)
+Spree::Order.remove_checkout_step(:delivery)
+
 Spree::Frontend::Config.configure do |config|
   config.use_static_preferences!
 
